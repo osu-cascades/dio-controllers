@@ -5,17 +5,18 @@ import fcntl      # used to access I2C parameters like addresses
 
 import time       # used for sleep delay and timestamps
 import string     # helps parse strings
+import decimal	  # parses decimal value from string
 
 import requests	  # used to make requests to server
 
+read_count = 0
 
 class AtlasI2C:
 	long_timeout = 1.5         	# the timeout needed to query readings and calibrations
 	short_timeout = .5         	# timeout for regular commands
 	default_bus = 1         	# the default bus for I2C on the newer Raspberry Pis, certain older boards use bus 0
-	default_address = 98     	# the default address for the sensor
+	default_address = 97     	# the default address for the sensor
 	current_addr = default_address
-	request = 'localhost:3000/v1/send'
 
 	def __init__(self, address=default_address, bus=default_bus):
 		# open two file streams, one for reading and one for writing
@@ -43,15 +44,27 @@ class AtlasI2C:
 		self.file_write.write(cmd)
 
 	def read(self, num_of_bytes=31):
+		global read_count
+		print("read count: " + str(read_count))
 		# reads a specified number of bytes from I2C, then parses and displays the result
 		res = self.file_read.read(num_of_bytes)         # read from the board
 		response = filter(lambda x: x != '\x00', res)     # remove the null characters to get the response
+
 		if ord(response[0]) == 1:             # if the response isn't an error
 			# change MSB to 0 for all received characters except the first and get a list of characters
 			char_list = map(lambda x: chr(ord(x) & ~0x80), list(response[1:]))
-			requests.post(request, data=char_list)
+			reading = ''.join(char_list)
+
+			if (read_count >= 1):
+				payload = {}
+				payload['reading'] = reading
+				payload['location'] = 'ground-level'
+				print("payload: " + str(payload))
+				requests.post('http://192.168.0.2:3000/v1/send', data = payload)
+
+			read_count += 1
 			# NOTE: having to change the MSB to 0 is a glitch in the raspberry pi, and you shouldn't have to do this!
-			return "Command succeeded " + ''.join(char_list)     # convert the char list to a string and returns it
+			return "Command succeeded " + reading     # convert the char list to a string and returns it
 		else:
 			return "Error " + str(ord(response[0]))
 
@@ -87,7 +100,7 @@ class AtlasI2C:
 		self.set_i2c_address(prev_addr) # restore the address we were using
 		return i2c_devices
 
-		
+
 def main():
 	device = AtlasI2C() 	# creates the I2C port object, specify the address or bus if necessary
 
@@ -98,7 +111,7 @@ def main():
 	print(">>   Poll,xx.x command continuously polls the board every xx.x seconds")
 	print(" where xx.x is longer than the %0.2f second timeout." % AtlasI2C.long_timeout)
 	print(">> Pressing ctrl-c will stop the polling")
-	
+
 	# main loop
 	while True:
 		input = raw_input("Enter command: ")
@@ -147,4 +160,3 @@ def main():
 
 if __name__ == '__main__':
 	main()
-
