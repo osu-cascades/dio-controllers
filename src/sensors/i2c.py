@@ -6,6 +6,8 @@ import fcntl      # used to access I2C parameters like addresses
 import time       # used for sleep delay and timestamps
 import string     # helps parse strings
 
+import requests	  # used to make requests to server
+
 
 class AtlasI2C:
 	long_timeout = 1.5         	# the timeout needed to query readings and calibrations
@@ -13,6 +15,7 @@ class AtlasI2C:
 	default_bus = 1         	# the default bus for I2C on the newer Raspberry Pis, certain older boards use bus 0
 	default_address = 98     	# the default address for the sensor
 	current_addr = default_address
+	request = 'localhost:3000/v1/send'
 
 	def __init__(self, address=default_address, bus=default_bus):
 		# open two file streams, one for reading and one for writing
@@ -46,6 +49,7 @@ class AtlasI2C:
 		if ord(response[0]) == 1:             # if the response isn't an error
 			# change MSB to 0 for all received characters except the first and get a list of characters
 			char_list = map(lambda x: chr(ord(x) & ~0x80), list(response[1:]))
+			requests.post(request, data=char_list)
 			# NOTE: having to change the MSB to 0 is a glitch in the raspberry pi, and you shouldn't have to do this!
 			return "Command succeeded " + ''.join(char_list)     # convert the char list to a string and returns it
 		else:
