@@ -21,6 +21,8 @@ Hardware you will need:
 
 Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the Micro SD card and get your Pi setup by following the [documentation](https://www.raspberrypi.org/help/).
 
+### Software Setup
+
 Once your RP3 is running, connect to your wireless network via the USB adapter or Ethernet cord. Once you are connected to the internet you should download the libraries needed to communicate with the sensor and server. Run the following commands in the terminal.
 ```
 $ sudo apt-get update
@@ -37,53 +39,27 @@ Go to advanced options
 
 ![Go to Advanced Settings](setup/raspi-config1.PNG "Step 1")
 
-### Installing
+Then select Enable/Disable serial
 
-A step by step series of examples that tell you have to get a development env running
+![Enable login shell over serial port](setup/raspi-config2.PNG "Step 2")
 
-Say what the step will be
+Select Yes
 
-```
-Give the example
-```
+![Select yes](setup/raspi-config3.PNG "Step 3")
 
-And repeat
+Select Ok
 
-```
-until finished
-```
+![Select Ok](setup/raspi-config4.PNG "Step 4")
 
-End with an example of getting some data out of the system or using it for a little demo
+Reboot your RP3
 
-## Running the tests
+![Reboot system](setup/raspi-config5.PNG "Step 5")
 
-Explain how to run the automated tests for this system
+The serial port is now ready to be hooked up!
 
-### Break down into end to end tests
+## Wiring Up the Sensor(s)
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+[Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
 
 ## Contributing
 
