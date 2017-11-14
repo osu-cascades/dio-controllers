@@ -34,6 +34,7 @@ By default the serial port on the RP3 is disabled so you will need to manually e
 $ sudo raspi-config
 ```
 Go to advanced options
+
 ![Go to Advanced Settings](setup/raspi-config1.PNG "Step 1")
 
 ### Installing
