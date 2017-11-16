@@ -61,7 +61,7 @@ The serial port is now ready to be hooked up!
 
 [Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
 
-![Fritzing Diagram](setup/FRITZ.PNG "Fritzing Diagram")
+![Fritzing Diagram](setup/FRITZ.png "Fritzing Diagram")
 
 ## Contributing
 
