@@ -59,6 +59,21 @@ Reboot your RP3
 
 The serial port is now ready to be hooked up!
 
+## Installing Raspbian Jessie 
+Click [Here](http://downloads.raspberrypi.org/raspbian/images/raspbian-2016-03-18/2016-03-18-raspbian-jessie.zip) to download Raspberry Jessie (This will take about 20 minutes to install, Time for something a little stronger. :beer: )
+
+Run the following command line within the Raspberry Pi’s terminal.
+```
+sudo raspi-config
+```
+You should see a blue screen with options in a gray box in the center, like so, choose expand file system
+
+![Expand File System](setup/file-system.png "Step 1")
+
+
+
+
+
 ## Wiring Up the Sensor(s)
 
 [Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
