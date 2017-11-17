@@ -31,6 +31,8 @@ $ sudo apt-get install python-dev
 $ sudo apt-get install python-serial
 $ sudo apt-get install python-rpi.gpio
 ```
+These commands may take a little time, this would be a good point to get up and get some coffee :coffee:
+
 By default the serial port on the RP3 is disabled so you will need to manually enable it. To do so run the following commands:
 ```
 $ sudo raspi-config
