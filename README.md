@@ -23,7 +23,7 @@ Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) o
 
 ### Software Setup
 
-Once your RP3 is running, connect to your wireless network via the USB adapter or Ethernet cord. Once you are connected to the internet you should download the libraries needed to communicate with the sensor and server. Run the following commands in the terminal.
+Once your RP3 is running, connect to your wireless network by going to the icon on the top right of your screen and selecting your access point. Once you are connected to the internet you should download the libraries needed to communicate with the sensor and server. Run the following commands in the terminal.
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core
