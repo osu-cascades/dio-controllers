@@ -72,13 +72,9 @@ Reboot your RP3
 
 The serial port is now ready to be hooked up!
 
+## Hardware Setup
 
-
-
-
-
-
-## Wiring Up the Sensor(s)
+### Wiring Up the Sensor(s)
 
 [Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
 
