@@ -15,15 +15,28 @@ Hardware you will need:
 - Monitor and HDMI cable (only needed to setup)
 - Keyboard and mouse (only needed to setup)
 - Atlas Scientific [Dissolved Oxygen sensor kit](https://www.atlas-scientific.com/product_pages/kits/do_kit.html)
-- [Jumper wires (female-to-male)](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=female+to+male+jumper+wires)
+- [Jumper wires (female-to-male & male-to-male)](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=female+to+male+jumper+wires)
 - [USB Wifi adapter](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)
 - [Breadboard](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=breadboard&rh=n%3A172282%2Ck%3Abreadboard)
 
 Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the Micro SD card and get your Pi setup by following the [documentation](https://www.raspberrypi.org/help/).
 
-### Software Setup
+## Software Setup
 
-Once your RP3 is running, connect to your wireless network by going to the icon on the top right of your screen and selecting your access point. Once you are connected to the internet you should download the libraries needed to communicate with the sensor and server. Run the following commands in the terminal.
+### Installing Raspbian Jessie
+Click [Here](http://downloads.raspberrypi.org/raspbian/images/raspbian-2016-03-18/2016-03-18-raspbian-jessie.zip) to download Raspberry Jessie (This will take about 20 minutes to install, this would be a good point to get up and get some coffee :coffee: )
+
+Run the following command line within the Raspberry Pi’s terminal.
+```
+sudo raspi-config
+```
+You should see a blue screen with options in a gray box in the center, like so, choose expand file system
+
+![Expand File System](setup/file-system.png "Step 1")
+
+### Enabling Serial Port
+
+Once your RP3 is running on Raspbian Jessie, connect to your wireless network by going to the icon on the top right of your screen and selecting your access point. Once you are connected to the internet you should download the libraries needed to communicate with the sensor and server. Run the following commands in the terminal.
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core
@@ -31,7 +44,7 @@ $ sudo apt-get install python-dev
 $ sudo apt-get install python-serial
 $ sudo apt-get install python-rpi.gpio
 ```
-These commands may take a little time, this would be a good point to get up and get some coffee :coffee:
+These commands may take a little time, time for something a little stronger. :beer:
 
 By default the serial port on the RP3 is disabled so you will need to manually enable it. To do so run the following commands:
 ```
@@ -59,16 +72,7 @@ Reboot your RP3
 
 The serial port is now ready to be hooked up!
 
-## Installing Raspbian Jessie 
-Click [Here](http://downloads.raspberrypi.org/raspbian/images/raspbian-2016-03-18/2016-03-18-raspbian-jessie.zip) to download Raspberry Jessie (This will take about 20 minutes to install, Time for something a little stronger. :beer: )
 
-Run the following command line within the Raspberry Pi’s terminal.
-```
-sudo raspi-config
-```
-You should see a blue screen with options in a gray box in the center, like so, choose expand file system
-
-![Expand File System](setup/file-system.png "Step 1")
 
 
 
