@@ -21,6 +21,14 @@ Hardware you will need:
 
 Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the Micro SD card and get your Pi setup by following the [documentation](https://www.raspberrypi.org/help/).
 
+## Hardware Setup
+
+### Wiring Up the Sensor(s)
+
+[Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
+
+![Fritzing Diagram](setup/FRITZ.png "Fritzing Diagram")
+
 ## Software Setup
 
 ### Installing Raspbian Jessie
@@ -72,13 +80,61 @@ Reboot your RP3
 
 The serial port is now ready to be hooked up!
 
-## Hardware Setup
+### Enable I2C Mode
 
-### Wiring Up the Sensor(s)
+There are three communication modes that the Atlas Scientific can operate in with the RP3: USB mode, UART mode, and I2C. For this setup we used I2C mode and you must first enable the I2C channel on your RP3. For more information about the different modes reference the Atlas Scientific [Sensor Documentation](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf).
 
-[Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
+Before you enable the I2C Bus you need to install some packages
 
-![Fritzing Diagram](setup/FRITZ.png "Fritzing Diagram")
+```
+$ sudo apt-get install python-smbus
+$ sudo apt-get install i2c-tools
+```
+Once those packages have finished installing, you need to re-open the Raspberry Pi config
+
+```
+$ sudo raspi-config
+```
+Go to Advanced options
+
+Select I2C
+
+Select Yes
+
+Select Ok and reboot the raspberry Pi once again.
+
+```
+$ sudo Reboot
+```
+
+### Test Sensor Connection
+
+To ensure the sensor is properly connected to your raspberry pi's I2C Bus, run the following command
+
+```
+$ sudo i2cdetect -y 1
+```
+
+This will report information about each connected I2C device and should display that I2C address (0x61) is in use.
+Depending on the sensor you are using you will see a different I2C address in use. The pH sensor for example lists (0x63) as its I2C address, refer to the [documentation](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf) for your sensors specific address. Also note that the documentation lists the address in decimal format, so the pH sensors address is listed as "93" which translates to (0x63) in hexadecimal.
+
+Once you see your devices listed in the I2C bus, you are ready to test communication with the sensor.
+
+After you have downloaded the sample code, open the terminal in the directory and run
+
+```
+$ sudo python i2c.py
+```
+
+This will prompt you with some argument options. To test if your sensor is communicating enter
+
+```
+POLL,2.0
+```
+This will set your sensor to take a reading every two seconds and print it to the terminal window.
+
+The sample code provided by Atlas Scientific has the sensors address set to 99 by default, you can change this address manually in the code or you can adjust the ad
+
 
 ## Contributing
 
