@@ -103,16 +103,16 @@ $ sudo raspi-config
 ```
 Go to Advanced options
 
-![Advanced Options](setup/sample-code1.PNG "Step 1")
+![Advanced Options](setup/sample-code1.png "Step 1")
 
 Select I2C
 
-![Select I2C](setup/sample-code2.PNG "Step 2")
+![Select I2C](setup/sample-code2.png "Step 2")
 
 
 Select Yes
 
-![YES](setup/sample-code3.PNG "Step 3")
+![YES](setup/sample-code3.png "Step 3")
 
 
 Select Ok and reboot the raspberry Pi once again.
