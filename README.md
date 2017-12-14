@@ -24,9 +24,6 @@ Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) o
 ## Hardware Setup
 
 ### Wiring Up the Sensor(s)
-
-[Atlas Scientific Setup Guide](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
-
 ![Fritzing Diagram](setup/FRITZ.png "Fritzing Diagram")
 
 ## Software Setup
@@ -79,6 +76,15 @@ Reboot your RP3
 ![Reboot system](setup/raspi-config5.PNG "Step 5")
 
 The serial port is now ready to be hooked up!
+### Download Sample Code
+To download the Atlas Scientific™ sample code,run the following commands within the
+Raspberry Pi’s terminal.
+```
+cd ~
+git clone https://github.com/AtlasScientific/Raspberry-Pi-sample-code.git
+```
+Once the sample code has finished downloading, you will be almost ready to begin
+using the Atlas Scientific™ EZO™ class circuits with your updated Raspberry Pi.
 
 ### Enable I2C Mode
 
@@ -97,9 +103,17 @@ $ sudo raspi-config
 ```
 Go to Advanced options
 
+![Advanced Options](setup/sample-code1.png "Step 1")
+
 Select I2C
 
+![Select I2C](setup/sample-code2.png "Step 2")
+
+
 Select Yes
+
+![YES](setup/sample-code3.png "Step 3")
+
 
 Select Ok and reboot the raspberry Pi once again.
 
@@ -125,6 +139,8 @@ After you have downloaded the sample code, open the terminal in the directory an
 ```
 $ sudo python i2c.py
 ```
+
+If you are not using i2C Mode and would like to use USB or UART go to the provided [HERE](https://www.atlas-scientific.com/_files/code/pi_sample_code.pdf)
 
 This will prompt you with some argument options. To test if your sensor is communicating enter
 
