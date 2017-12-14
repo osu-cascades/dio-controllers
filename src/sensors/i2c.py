@@ -60,7 +60,7 @@ class AtlasI2C:
 				payload['reading'] = reading
 				payload['location'] = 'ground-level'
 				print("payload: " + str(payload))
-				requests.post('http://192.168.0.2:3000/v1/send', data = payload)
+				requests.post('https://vv-dio-web-staging.herokuapp.com/api/v1/do/readings', data = payload)
 
 			read_count += 1
 			# NOTE: having to change the MSB to 0 is a glitch in the raspberry pi, and you shouldn't have to do this!
