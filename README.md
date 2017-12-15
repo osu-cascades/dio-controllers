@@ -49,18 +49,21 @@ You should see a blue screen with options in a gray box in the center, like so, 
 ![Expand File System](setup/file-system.png "Step 1")
 
 
-### Enabling Serial Port
+### Install the Dependencies
 
-Run the following commands in the terminal.
+Run the following commands in the terminal to update apt-get, upgrade installed packages, and install the project dependencies.
 
 ```
-$ sudo apt-get update
-$ sudo apt-get install git-core
-$ sudo apt-get install python-dev
-$ sudo apt-get install python-serial
-$ sudo apt-get install python-rpi.gpio
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git-core
+sudo apt-get install python-dev
+sudo apt-get install python-serial
+sudo apt-get install python-rpi.gpio
 ```
 These commands may take a little time, time for something a little stronger. :beer:
+
+### Enabling Serial Port
 
 By default the serial port on the RP3 is disabled so you will need to manually enable it. To do so run the following commands:
 ```
