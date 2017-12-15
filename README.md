@@ -1,14 +1,15 @@
 # DiO Controllers
 
-This project uses a Raspberry Pi 3 to send sensor data from an Atlas Scientific Dissolved Oxygen to a remote server. The controller code is written in Python. This setup assumes that you can setup your Raspberry Pi and that you have a basic knowledge of the command line. If you are having trouble getting your Raspberry Pi working, follow the setup instructions in the Raspberry Pi help [documentation](https://www.raspberrypi.org/help/).
+This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) to send sensor data from an [Atlas Scientific Dissolved Oxygen sensor](https://www.atlas-scientific.com/product_pages/kits/do_kit.html) to a remote server. The controller code is written in Python. This setup assumes that you can setup your Raspberry Pi and that you have a basic knowledge of the command line. If you are having trouble getting your Raspberry Pi working, follow the setup instructions in the Raspberry Pi help [documentation](https://www.raspberrypi.org/help/).
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+These instructions will help you get the sensor controller and sensor up and running. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running, and [dio-web](https://github.com/osu-cascades/dio-web) to get the web application running.
 
 ### Prerequisites
 
 Hardware you will need:
+
 - [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 - At least 8GB [Micro SD card](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=micro+sd&rh=n%3A172282%2Ck%3Amicro+sd&ajr=0)
 - [Micro USB power supply (2.1 A)](https://www.amazon.com/Raspberry-Keten-Charger-Adapter-Android/dp/B01K7EF2XS/ref=sr_1_cc_2?s=aps&ie=UTF8&qid=1510630813&sr=1-2-catcorr&keywords=micro+usb+power+cable)
@@ -19,8 +20,6 @@ Hardware you will need:
 - [USB Wifi adapter](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)
 - [Breadboard](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=breadboard&rh=n%3A172282%2Ck%3Abreadboard)
 
-Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the Micro SD card and get your Pi setup by following the [documentation](https://www.raspberrypi.org/help/).
-
 ## Hardware Setup
 
 ### Wiring Up the Sensor(s)
@@ -28,8 +27,12 @@ Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) o
 
 ## Software Setup
 
-### Installing Raspbian Jessie
-Click [Here](http://downloads.raspberrypi.org/raspbian/images/raspbian-2016-03-18/2016-03-18-raspbian-jessie.zip) to download Raspberry Jessie (This will take about 20 minutes to install, this would be a good point to get up and get some coffee :coffee: )
+Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the micro SD card and get your Pi set up by following the [documentation](https://www.raspberrypi.org/help/). (This will take about 30 minutes to download and install, this would be a good point to get up and get some coffee :coffee: )
+Note that these instructions did not use NOOBS, but used the Raspbian Stretch Desktop, directly imaged to the micro SD card.
+
+Start the Raspberry Pi to ensure that it boots.
+
+Update the Wi-Fi settings and ensure that the date and time are correct.
 
 Run the following command line within the Raspberry Pi’s terminal.
 ```
