@@ -34,13 +34,20 @@ Start the Raspberry Pi to ensure that it boots.
 
 Update the Wi-Fi settings and ensure that the date and time are correct.
 
-Run the following command line within the Raspberry Pi’s terminal.
+### Using NOOBS?
+
+If you installed Raspbian by flashing the full image to the SD card, skip this step.
+
+If you are installing the OS with NOOBS, you may need to expand the filesystem. Run the following command line within the Raspberry Pi’s terminal.
+
 ```
 sudo raspi-config
 ```
+
 You should see a blue screen with options in a gray box in the center, like so, choose expand file system
 
 ![Expand File System](setup/file-system.png "Step 1")
+
 
 ### Enabling Serial Port
 
