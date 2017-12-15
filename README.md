@@ -51,7 +51,8 @@ You should see a blue screen with options in a gray box in the center, like so, 
 
 ### Enabling Serial Port
 
-Once your RP3 is running on Raspbian Jessie, connect to your wireless network by going to the icon on the top right of your screen and selecting your access point. Once you are connected to the internet you should download the libraries needed to communicate with the sensor and server. Run the following commands in the terminal.
+Run the following commands in the terminal.
+
 ```
 $ sudo apt-get update
 $ sudo apt-get install git-core
