@@ -61,7 +61,6 @@ sudo apt-get install python-dev
 sudo apt-get install python-serial
 sudo apt-get install python-rpi.gpio
 ```
-These commands may take a little time, time for something a little stronger. :beer:
 
 ### Enabling Serial Port
 
