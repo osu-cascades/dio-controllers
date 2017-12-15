@@ -27,8 +27,7 @@ Hardware you will need:
 
 ## Software Setup
 
-Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the micro SD card and get your Pi set up by following the [documentation](https://www.raspberrypi.org/help/). (This will take about 30 minutes to download and install, this would be a good point to get up and get some coffee :coffee: )
-Note that these instructions did not use NOOBS, but used the Raspbian Stretch Desktop, directly imaged to the micro SD card.
+Flash the latest version of [Raspbian](https://www.raspberrypi.org/downloads/) onto the micro SD card and get your Pi set up by following the [documentation](https://www.raspberrypi.org/help/). (This will take about 30 minutes to download and install, so this would be a good point to get up and get some coffee :coffee: ). Note that these instructions did not use NOOBS, but used the _Raspbian Stretch Desktop_, directly imaged to the micro SD card.
 
 Start the Raspberry Pi to ensure that it boots.
 
@@ -64,7 +63,8 @@ sudo apt-get install python-rpi.gpio
 
 ### Enabling Serial Port
 
-By default the serial port on the RP3 is disabled so you will need to manually enable it. To do so run the following commands:
+By default the serial port on the Pi is disabled so you will need to manually enable it. To do so run the following commands:
+
 ```
 $ sudo raspi-config
 ```
