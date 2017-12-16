@@ -63,32 +63,35 @@ sudo apt-get install python-rpi.gpio
 
 ### Enabling Serial Port
 
-By default the serial port on the Pi is disabled so you will need to manually enable it. To do so run the following commands:
+By default, the serial port on the Raspberry Pi is disabled, so you will need to manually enable it.
+To do so, run _raspi-config_:
 
 ```
-$ sudo raspi-config
+sudo raspi-config
 ```
-Go to advanced options
 
-![Go to Advanced Settings](setup/raspi-config1.PNG "Step 1")
+Select _Advanced Options_.
 
-Then select Enable/Disable serial
+![Go to Advanced Options](setup/raspi-config1.PNG "Step 1")
+
+Then select _Serial_.
 
 ![Enable login shell over serial port](setup/raspi-config2.PNG "Step 2")
 
-Select Yes
+Select _Yes_.
 
 ![Select yes](setup/raspi-config3.PNG "Step 3")
 
-Select Ok
+Select _Ok_.
 
 ![Select Ok](setup/raspi-config4.PNG "Step 4")
 
-Reboot your RP3
+Reboot your Pi.
 
 ![Reboot system](setup/raspi-config5.PNG "Step 5")
 
 The serial port is now ready to be hooked up!
+
 ### Download Sample Code
 To download the Atlas Scientific™ sample code,run the following commands within the
 Raspberry Pi’s terminal.
