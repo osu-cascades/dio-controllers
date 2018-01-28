@@ -1,6 +1,6 @@
 # DiO Controllers
 
-This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) to send sensor data from an [Atlas Scientific Dissolved Oxygen sensor](https://www.atlas-scientific.com/product_pages/kits/do_kit.html) to a remote server. The controller code is written in Python. This setup assumes that you can setup your Raspberry Pi and that you have a basic knowledge of the command line. If you are having trouble getting your Raspberry Pi working, follow the setup instructions in the Raspberry Pi help [documentation](https://www.raspberrypi.org/help/).
+This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) to send sensor data from an [Atlas Scientific Dissolved Oxygen sensor](https://www.atlas-scientific.com/product_pages/kits/do_kit.html) to a remote server. The controller code is written in Python. This setup assumes that you can setup your Raspberry Pi and that you have a basic knowledge of the command line. If you are having trouble checkout [the Wiki](https://github.com/osu-cascades/dio-controllers/wiki) for step-by-step instructions to get your setup running.
 
 ## Getting Started
 
