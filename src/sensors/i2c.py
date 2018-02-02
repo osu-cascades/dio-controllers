@@ -59,12 +59,15 @@ class AtlasI2C:
 			char_list = map(lambda x: chr(ord(x) & ~0x80), list(response[1:]))
 			reading = ''.join(char_list)
 
+			try:
+				ubi_var.save_value({'value': reading})
+			except ValueError:
+				print "No JSON received"
+
 			if (read_count >= 1):
 				payload = {}
 				payload['reading'] = reading
 				payload['location'] = 'ground-level'
-				ubi_var.save_value({'value': reading})
-				print("payload: " + str(payload))
 				requests.post('https://vv-dio-service-staging.herokuapp.com/api/v1/do/readings', data = payload)
 
 			read_count += 1
