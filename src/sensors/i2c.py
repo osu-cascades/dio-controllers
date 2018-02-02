@@ -76,7 +76,6 @@ class AtlasI2C:
 				payload = {}
 				payload['reading'] = reading
 				payload['location'] = 'ground-level'
-				ubi_var.save_value({'value': reading})
 				print("payload: " + str(payload))
 				client.publish('v1/devices/me/telemetry', json.dumps(payload), 1)
 				requests.post('https://vv-dio-service-staging.herokuapp.com/api/v1/do/readings', data = payload)
