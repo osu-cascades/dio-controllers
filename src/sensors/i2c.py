@@ -5,7 +5,6 @@ import fcntl      # used to access I2C parameters like addresses
 
 import time       # used for sleep delay and timestamps
 import string     # helps parse strings
-import decimal	  # parses decimal value from string
 
 import requests	  # used to make requests to server
 from ubidots import ApiClient
@@ -61,8 +60,11 @@ class AtlasI2C:
 
 			try:
 				ubi_var.save_value({'value': reading})
-			except ValueError:
-				print "No JSON received"
+			except UbidotsError400 as e:
+				print("General Description: %s; and the details: %s" % (e.message, e.detail))
+
+			except UbidotsError500 as e:
+				print("General Description: %s; and the details: %s" % (e.message, e.detail))
 
 			if (read_count >= 1):
 				payload = {}
