@@ -59,7 +59,7 @@ class AtlasI2C:
 			reading = ''.join(char_list)
 
 			try:
-				ubi_var.save_value({'value': float(reading)})
+				ubi_var.save_value({'value': reading})
 			except UbidotsError400 as e:
 				print("General Description: %s; and the details: %s" % (e.message, e.detail))
 
