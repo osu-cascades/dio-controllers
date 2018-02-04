@@ -13,7 +13,7 @@ import paho.mqtt.client as mqtt
 import json
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
-ACCESS_TOKEN = 'dpIySkhUBhh7GxL1Z6Q7'
+ACCESS_TOKEN = 'DtQvVu5pNtW4AGHcMJJw'
 read_count = 0
 
 client = mqtt.Client()
