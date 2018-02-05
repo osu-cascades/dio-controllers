@@ -77,7 +77,7 @@ class AtlasI2C:
 				payload['reading'] = reading
 				payload['location'] = 'ground-level'
 				print("payload: " + str(payload))
-				client.publish('v1/devices/me/telemetry', json.dumps(payload), 1)
+				client.publish('v1/devices/me/telemetry', json.dumps(payload))
 				requests.post('https://vv-dio-service-staging.herokuapp.com/api/v1/do/readings', data = payload)
 
 			read_count += 1
