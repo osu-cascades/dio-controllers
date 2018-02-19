@@ -79,27 +79,19 @@ Then select _Serial_.
 ![Enable login shell over serial port](setup/raspi-config2.PNG "Step 2")
 
 Select _Yes_.
-
-![Select yes](setup/raspi-config3.PNG "Step 3")
-
+Then
 Select _Ok_.
-
-![Select Ok](setup/raspi-config4.PNG "Step 4")
-
 Reboot your Pi.
-
-![Reboot system](setup/raspi-config5.PNG "Step 5")
-
 The serial port is now ready to be hooked up!
 
-### Download Sample Code
-To download the Atlas Scientific™ sample code,run the following commands within the
+### Download this repo
+To download the repo code,run the following commands within the
 Raspberry Pi’s terminal.
 ```
 cd ~
-git clone https://github.com/AtlasScientific/Raspberry-Pi-sample-code.git
+git clone https://github.com/osu-cascades/dio-controllers.git
 ```
-Once the sample code has finished downloading, you will be almost ready to begin
+Once the repo code has finished downloading, you will be almost ready to begin
 using the Atlas Scientific™ EZO™ class circuits with your updated Raspberry Pi.
 
 ### Enable I2C Mode
