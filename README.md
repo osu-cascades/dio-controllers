@@ -23,7 +23,7 @@ Hardware you will need:
 ## Hardware Setup
 
 ### Wiring Up the Sensor(s)
-![Fritzing Diagram](setup/FRITZ.png "Fritzing Diagram")
+![Fritzing Diagram](setup/Fritz.png "Fritzing Diagram")
 
 ## Software Setup
 
