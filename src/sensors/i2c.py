@@ -2,6 +2,7 @@
 
 import io  # used to create file streams
 import fcntl  # used to access I2C parameters like addresses
+import MySQLdb
 
 import time  # used for sleep delay and timestamps
 import string  # helps parse strings
@@ -12,7 +13,12 @@ from ubidots import ApiClient, UbidotsError400, UbidotsError500
 read_count = 0
 api = ApiClient(token='A1E-vGTnBLOqGwY2r1UaV4akhgtbHTVerA')
 ubi_var = api.get_variable('5a695f4cc03f973ff9b5a80f')
-
+DB_USER =  "ardrino"
+DB_PASS =  "7snfklas90fjDa_!"
+DB_HOST =  "mysql.skyfirestudio.com"
+DB_NAME = "sk_booknow"
+conn = MySQLdb.connect(host = DB_HOST, user = DB_USER,  passwd = DB_PASS,  db = DB_NAME)
+x = conn.cursor()
 
 class AtlasI2C:
     long_timeout = 1.5  # the timeout needed to query readings and calibrations
@@ -73,8 +79,11 @@ class AtlasI2C:
             if (read_count >= 1):
                 payload = {}
                 payload['reading'] = reading
-                payload['location'] = 'ground-level'
+                payload['location'] = 'TANK 1'
                 requests.post('https://vv-dio-service-staging.herokuapp.com/api/v1/do/readings', data=payload)
+                x.execute("INSERT INTO monitoring SET value= reading, datestamp=NOW(), Location='TANK 1', post_type='DO'")
+                x.commit()
+                conn.close()
 
             read_count += 1
             # NOTE: having to change the MSB to 0 is a glitch in the raspberry pi, and you shouldn't have to do this!
