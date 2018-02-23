@@ -68,30 +68,6 @@ sudo apt-get install python-dev
 sudo apt-get install python-serial
 sudo apt-get install python-rpi.gpio
 ```
-
-### Enabling Serial Port
-
-By default, the serial port on the Raspberry Pi is disabled, so you will need to manually enable it.
-To do so, run _raspi-config_:
-
-```
-sudo raspi-config
-```
-
-Select _Advanced Options_.
-
-![Go to Advanced Options](setup/raspi-config1.PNG "Step 1")
-
-Then select _Serial_.
-
-![Enable login shell over serial port](setup/raspi-config2.PNG "Step 2")
-
-Select _Yes_.
-Then
-Select _Ok_.
-Reboot your Pi.
-The serial port is now ready to be hooked up!
-
 ### Download this repo
 To download the repo code,run the following commands within the
 Raspberry Pi’s terminal.
