@@ -1,13 +1,21 @@
-# DiO Controllers
+# Volcano Veggies
+This project is for a compnay called Volcano Veggies located in Downtown Bend,Oregon. Volcano Veggies is an Aquaponics Vegtable growing farm that can operate all year round and provide fresh local veggies. 
+This project is being worked on by two OSU students, Makeila Lundy and Justin Tappert.
 
-This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) to send sensor data from an [Atlas Scientific Dissolved Oxygen sensor](https://www.atlas-scientific.com/product_pages/kits/do_kit.html) to a remote server. The controller code is written in Python. This setup assumes that you can setup your Raspberry Pi and that you have a basic knowledge of the command line. If you are having trouble checkout [the Wiki](https://github.com/osu-cascades/dio-controllers/wiki) for step-by-step instructions to get your setup running.
+This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) to send sensor data from an [Atlas Scientific Dissolved Oxygen sensor](https://www.atlas-scientific.com/product_pages/kits/do_kit.html) to a remote server. The controller code is written in Python. This setup assumes that you can setup your Raspberry Pi and that you have a basic knowledge of the command line. 
 
 ## Getting Started
 
-These instructions will help you get the sensor controller and sensor up and running. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running, and [dio-web](https://github.com/osu-cascades/dio-web) to get the web application running.
+These instructions will help you get the sensor controller and sensor up and running. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running.
 
 ### Prerequisites
 
+### Software
+- Sublime (or the text editor or your choice)
+- Python 
+- Tmux
+
+# Hardware
 Hardware you will need:
 
 - [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
