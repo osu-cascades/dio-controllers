@@ -51,9 +51,13 @@ If you are installing the OS with NOOBS, you may need to expand the filesystem. 
 sudo raspi-config
 ```
 
-You should see a blue screen with options in a gray box in the center, like so, choose expand file system
+You should see a blue screen with options in a gray box in the center,
 
-![Expand File System](setup/file-system.png "Step 1")
+Choose option 7 (Advanced Options)
+
+Next, 
+
+Choose option A1 Expand Filesystem
 
 
 ### Install the Dependencies
