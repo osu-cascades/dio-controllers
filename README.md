@@ -28,11 +28,6 @@ Hardware you will need:
 - [USB Wifi adapter](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)
 - [Breadboard](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=breadboard&rh=n%3A172282%2Ck%3Abreadboard)
 
-## Hardware Setup
-
-### Wiring Up the Sensor(s)
-![Fritzing Diagram](setup/Fritz.png "Fritzing Diagram")
-
 
 ## Versioning
 
