@@ -6,11 +6,7 @@ This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspbe
 
 ## Getting Started
 
-These instructions will help you get the sensor controller and sensor up and running. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+Refer to thhis repo's [Wiki](https://github.com/osu-cascades/dio-controllers/wiki) for detailed instructions on how to get your setup working. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running.
 
 ## Authors
 
