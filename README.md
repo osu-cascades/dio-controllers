@@ -6,7 +6,7 @@ This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspbe
 
 ## Getting Started
 
-Refer to thhis repo's [Wiki](https://github.com/osu-cascades/dio-controllers/wiki) for detailed instructions on how to get your setup working. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running.
+Refer to this repo's [Wiki](https://github.com/osu-cascades/dio-controllers/wiki) for detailed instructions on how to get your setup working. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running.
 
 ## Authors
 
