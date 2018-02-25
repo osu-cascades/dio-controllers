@@ -8,27 +8,6 @@ This project uses a [Raspberry Pi 3](https://www.raspberrypi.org/products/raspbe
 
 These instructions will help you get the sensor controller and sensor up and running. See [dio-service](https://github.com/osu-cascades/dio-service) to get the service running.
 
-### Prerequisites
-
-### Software
-- Sublime (or the text editor or your choice)
-- Python 
-- Tmux
-
-# Hardware
-Hardware you will need:
-
-- [Raspberry Pi 3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
-- At least 8GB [Micro SD card](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=micro+sd&rh=n%3A172282%2Ck%3Amicro+sd&ajr=0)
-- [Micro USB power supply (2.1 A)](https://www.amazon.com/Raspberry-Keten-Charger-Adapter-Android/dp/B01K7EF2XS/ref=sr_1_cc_2?s=aps&ie=UTF8&qid=1510630813&sr=1-2-catcorr&keywords=micro+usb+power+cable)
-- Monitor and HDMI cable (only needed to setup)
-- Keyboard and mouse (only needed to setup)
-- Atlas Scientific [Dissolved Oxygen sensor kit](https://www.atlas-scientific.com/product_pages/kits/do_kit.html)
-- [Jumper wires (female-to-male & male-to-male)](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Dmobile&field-keywords=female+to+male+jumper+wires)
-- [USB Wifi adapter](https://www.amazon.com/Edimax-EW-7811Un-150Mbps-Raspberry-Supports/dp/B003MTTJOY)
-- [Breadboard](https://www.amazon.com/s/ref=nb_sb_noss_2?url=search-alias%3Delectronics&field-keywords=breadboard&rh=n%3A172282%2Ck%3Abreadboard)
-
-
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
