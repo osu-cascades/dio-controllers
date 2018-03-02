@@ -2,7 +2,6 @@
 
 import io  # used to create file streams
 import fcntl  # used to access I2C parameters like addresses
-import MySQLdb
 
 import time  # used for sleep delay and timestamps
 import string  # helps parse strings
@@ -12,6 +11,7 @@ from ubidots import ApiClient, UbidotsError400, UbidotsError500
 
 read_count = 0
 api = ApiClient(token='A1E-vGTnBLOqGwY2r1UaV4akhgtbHTVerA')
+ubi_var = api.get_variable('5a695f4cc03f973ff9b5a80f')
 
 class AtlasI2C:
     long_timeout = 1.5  # the timeout needed to query readings and calibrations
