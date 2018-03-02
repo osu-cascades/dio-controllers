@@ -75,8 +75,6 @@ class AtlasI2C:
                 payload['location'] = 'TANK 1'
                 requests.post('https://vv-dio-service-staging.herokuapp.com/api/v1/do/readings', data=payload)
 
-                conn.close()
-
             read_count += 1
             # NOTE: having to change the MSB to 0 is a glitch in the raspberry pi, and you shouldn't have to do this!
             return "Command succeeded " + reading  # convert the char list to a string and returns it
