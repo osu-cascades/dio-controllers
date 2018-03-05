@@ -42,8 +42,7 @@ class AtlasI2C:
         self.file_write.write(cmd)
 
     def read(self, num_of_bytes=31):
-        global read_count
-        global ubi_var
+        global read_counts
         print("read count: " + str(read_count))
         # reads a specified number of bytes from I2C, then parses and displays the result
         res = self.file_read.read(num_of_bytes)  # read from the board
@@ -54,16 +53,6 @@ class AtlasI2C:
             char_list = map(lambda x: chr(ord(x) & ~0x80), list(response[1:]))
             reading = ''.join(char_list)
 
-            try:
-                ubi_var.save_value({'value': reading})
-            except UbidotsError400 as e:
-                print("General Description: %s; and the details: %s" % (e.message, e.detail))
-
-            except UbidotsError500 as e:
-                print("General Description: %s; and the details: %s" % (e.message, e.detail))
-
-            except ValueError as e:
-                print("JSON decode error: %s" % (e.message))
 
             if (read_count >= 1):
                 payload = {}
