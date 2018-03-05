@@ -7,11 +7,8 @@ import time  # used for sleep delay and timestamps
 import string  # helps parse strings
 
 import requests  # used to make requests to server
-from ubidots import ApiClient, UbidotsError400, UbidotsError500
 
 read_count = 0
-api = ApiClient(token='A1E-vGTnBLOqGwY2r1UaV4akhgtbHTVerA')
-ubi_var = api.get_variable('5a695f4cc03f973ff9b5a80f')
 
 class AtlasI2C:
     long_timeout = 1.5  # the timeout needed to query readings and calibrations
@@ -47,7 +44,6 @@ class AtlasI2C:
 
     def read(self, num_of_bytes=31):
         global read_count
-        global ubi_var
         print("read count: " + str(read_count))
         # reads a specified number of bytes from I2C, then parses and displays the result
         res = self.file_read.read(num_of_bytes)  # read from the board
@@ -57,17 +53,6 @@ class AtlasI2C:
             # change MSB to 0 for all received characters except the first and get a list of characters
             char_list = map(lambda x: chr(ord(x) & ~0x80), list(response[1:]))
             reading = ''.join(char_list)
-
-            try:
-                ubi_var.save_value({'value': reading})
-            except UbidotsError400 as e:
-                print("General Description: %s; and the details: %s" % (e.message, e.detail))
-
-            except UbidotsError500 as e:
-                print("General Description: %s; and the details: %s" % (e.message, e.detail))
-
-            except ValueError as e:
-                print("JSON decode error: %s" % (e.message))
 
             if (read_count >= 1):
                 payload = {}
