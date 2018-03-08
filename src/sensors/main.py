@@ -7,7 +7,6 @@ addr3 = 100
 delaytime = 6
 
 def main():
-	while True:
 		atlas = AtlasI2C()
 		atlas.address(addr1)
 		print('address 1 = ',addr1)
