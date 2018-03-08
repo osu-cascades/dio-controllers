@@ -6,7 +6,6 @@ addr1 = 97
 addr2 = 99
 addr3 = 100
 delaytime = 6
-readcount = 0
 
 atlas = AtlasI2C()
 atlas.address(addr1)
