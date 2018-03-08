@@ -15,9 +15,8 @@ class AtlasI2C:
     short_timeout = .5  # timeout for regular commands
     default_bus = 1  # the default bus for I2C on the newer Raspberry Pis, certain older boards use bus 0
     default_address = 97  # the default address for the sensor
-    current_addr1 = default_address
-    current_addr2 = default_address
-    current_addr3 = default_address
+    current_addr = default_address
+    
 
     def __init__(self, address=default_address, bus=default_bus):
         # open two file streams, one for reading and one for writing
@@ -30,20 +29,15 @@ class AtlasI2C:
         # initializes I2C to either a user specified or default address
         self.set_i2c_address(address)
 
-    def set_i2c_address(self, addr1,addr2,addr3):
+    def set_i2c_address(self, addr):
         # set the I2C communications to the slave specified by the address
         # The commands for I2C dev using the ioctl functions are specified in
         # the i2c-dev.h file from i2c-tools
         I2C_SLAVE = 0x703
-        fcntl.ioctl(self.file_read, I2C_SLAVE, addr1)
-        fcntl.ioctl(self.file_write, I2C_SLAVE, addr1)
-        fcntl.ioctl(self.file_read, I2C_SLAVE, addr2)
-        fcntl.ioctl(self.file_write, I2C_SLAVE, addr2)
-        fcntl.ioctl(self.file_read, I2C_SLAVE, addr3)
-        fcntl.ioctl(self.file_write, I2C_SLAVE, addr3)
-        self.current_addr1 = addr1
-        self.current_addr2 = addr2
-        self.current_addr3 = addr3
+        fcntl.ioctl(self.file_read, I2C_SLAVE, addr)
+        fcntl.ioctl(self.file_write, I2C_SLAVE, addr)
+        self.current_addr = addr
+       
 
     def write(self, cmd):
         # appends the null character and sends the string over I2C
@@ -90,6 +84,28 @@ class AtlasI2C:
 
         return self.read()
 
+    def poll(self, delaytime):
+
+             # check for polling time being too short, change it to the minimum timeout if too short
+            if delaytime < AtlasI2C.long_timeout:
+                print("Polling time is shorter than timeout, setting polling time to %0.2f" % AtlasI2C.long_timeout)
+                delaytime = AtlasI2C.long_timeout
+
+            # get the information of the board you're polling
+            info = string.split(device.query("I"), ",")[1]
+            print("Polling %s sensor every %0.2f seconds, press ctrl-c to stop polling" % (info, delaytime))
+            
+            try:
+                while True:
+                    print(device.query("R"))
+                    time.sleep(delaytime - AtlasI2C.long_timeout)
+            except KeyboardInterrupt:  # catches the ctrl-c command, which breaks the loop above
+                print("Continuous polling stopped")
+
+    def address(self,addr):
+         device.set_i2c_address(addr)
+        print("I2C address set to " + str(addr))        
+
     def close(self):
         self.file_read.close()
         self.file_write.close()
@@ -130,10 +146,9 @@ def main():
 
         # address command lets you change which address the Raspberry Pi will poll
         elif input.upper().startswith("ADDRESS"):
-            addr1, addr2, addr3 raw_input(), raw_input(),raw_input()
-            # = int(string.split(input, ',')[1])
-            device.set_i2c_address(addr1,addr2,addr3)
-            print("I2C address set to " + str(addr1) + "," + str(addr2) + "," + str(addr3))
+            addr = int(string.split(input, ',')[1])
+            device.set_i2c_address(addr)
+            print("I2C address set to " + str(addr))
 
         # continuous polling command automatically polls the board
         elif input.upper().startswith("POLL"):
