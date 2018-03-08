@@ -5,11 +5,12 @@ import fcntl  # used to access I2C parameters like addresses
 
 import time  # used for sleep delay and timestamps
 import string  # helps parse strings
-
+import argparse
 import requests  # used to make requests to server
 
 read_count = 0
 class AtlasI2C:
+    parser = argparse.ArgumentParser(description='Process some addresses.')
     long_timeout = 1.5  # the timeout needed to query readings and calibrations
     short_timeout = .5  # timeout for regular commands
     default_bus = 1  # the default bus for I2C on the newer Raspberry Pis, certain older boards use bus 0
