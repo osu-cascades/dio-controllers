@@ -92,18 +92,18 @@ class AtlasI2C:
                 delaytime = AtlasI2C.long_timeout
 
             # get the information of the board you're polling
-            info = string.split(device.query("I"), ",")[1]
+            info = string.split(self.query("I"), ",")[1]
             print("Polling %s sensor every %0.2f seconds, press ctrl-c to stop polling" % (info, delaytime))
 
             try:
                 while True:
-                    print(device.query("R"))
+                    print(self.query("R"))
                     time.sleep(delaytime - AtlasI2C.long_timeout)
             except KeyboardInterrupt:  # catches the ctrl-c command, which breaks the loop above
                 print("Continuous polling stopped")
 
     def address(self,addr):
-         device.set_i2c_address(addr)
+         self.set_i2c_address(addr)
          print("I2C address set to " + str(addr))        
 
     def close(self):
