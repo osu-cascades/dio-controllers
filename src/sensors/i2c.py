@@ -10,6 +10,7 @@ import requests  # used to make requests to server
 
 read_count = 0
 class AtlasI2C:
+    readcount = 0
     parser = argparse.ArgumentParser(description='Process some addresses.')
     long_timeout = 1.5  # the timeout needed to query readings and calibrations
     short_timeout = .5  # timeout for regular commands
