@@ -1,11 +1,12 @@
 #!/usr/bin/python
-
+readcount = 0
 from i2c import AtlasI2C
 
 addr1 = 97
 addr2 = 99
 addr3 = 100
 delaytime = 6
+readcount = 0
 
 atlas = AtlasI2C()
 atlas.address(addr1)
