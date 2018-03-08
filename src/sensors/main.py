@@ -10,13 +10,13 @@ def main():
 	while True:
 		atlas = AtlasI2C()
 		atlas.address(addr1)
-		print('address 1 = 'addr1)
+		print('address 1 = ',addr1)
 		atlas.poll(delaytime)
 		atlas.address(addr2)
-		print('address 2 = 'addr2)
+		print('address 2 = ',addr2)
 		atlas.poll(delaytime)
 		atlas.address(addr3)
-		print('address 3 = 'addr3)
+		print('address 3 = ',addr3)
 		atlas.poll(delaytime)
 
 	
