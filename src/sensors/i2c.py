@@ -94,7 +94,7 @@ class AtlasI2C:
             # get the information of the board you're polling
             info = string.split(device.query("I"), ",")[1]
             print("Polling %s sensor every %0.2f seconds, press ctrl-c to stop polling" % (info, delaytime))
-            
+
             try:
                 while True:
                     print(device.query("R"))
@@ -104,7 +104,7 @@ class AtlasI2C:
 
     def address(self,addr):
          device.set_i2c_address(addr)
-        print("I2C address set to " + str(addr))        
+         Ïprint("I2C address set to " + str(addr))        
 
     def close(self):
         self.file_read.close()
