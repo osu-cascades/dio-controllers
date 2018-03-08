@@ -46,8 +46,8 @@ class AtlasI2C:
         self.file_write.write(cmd)
 
     def read(self, num_of_bytes=31):
-        global read_counts
-        print("read count: " + str(read_count))
+        global read_count
+       # print("read count: " + str(read_count))
         # reads a specified number of bytes from I2C, then parses and displays the result
         res = self.file_read.read(num_of_bytes)  # read from the board
         response = filter(lambda x: x != '\x00', res)  # remove the null characters to get the response
