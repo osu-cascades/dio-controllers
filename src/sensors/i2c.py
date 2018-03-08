@@ -104,7 +104,7 @@ class AtlasI2C:
 
     def address(self,addr):
          device.set_i2c_address(addr)
-         Ïprint("I2C address set to " + str(addr))        
+         print("I2C address set to " + str(addr))        
 
     def close(self):
         self.file_read.close()
