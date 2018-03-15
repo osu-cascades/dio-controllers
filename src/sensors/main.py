@@ -7,15 +7,17 @@ addr2 = 99
 addr3 = 100
 delaytime = 6
 
-atlas = AtlasI2C()
-atlas.address(addr1)
-print('address 1 = ',addr1)
-atlas.poll(delaytime)
-atlas.address(addr2)
-print('address 2 = ',addr2)
-atlas.poll(delaytime)
-atlas.address(addr3)
-print('address 3 = ',addr3)
-atlas.poll(delaytime)
+while True:
+    time.sleep(delaytime)
+	atlas = AtlasI2C()
+	atlas.address(addr1)
+	print('address 1 = ',addr1)
+	atlas.poll(delaytime)
+	atlas.address(addr2)
+	print('address 2 = ',addr2)
+	atlas.poll(delaytime)
+	atlas.address(addr3)
+	print('address 3 = ',addr3)
+	atlas.poll(delaytime)
 
 	
