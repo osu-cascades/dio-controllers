@@ -1,16 +1,14 @@
 #!/usr/bin/python
 
-import io         # used to create file streams
-import fcntl      # used to access I2C parameters like addresses
-
-import time       # used for sleep delay and timestamps
-import string     # helps parse strings
-import decimal	  # parses decimal value from string
-
+import io  # used to create file streams
+import fcntl  # used to access I2C parameters like addresses
+import time  # used for sleep delay and timestamps
+import string  # helps parse strings
 import requests	  # used to make requests to server
-import Adafruit_DHT as dht
 import paho.mqtt.client as mqtt
+import requests  # used to make requests to server
 import json
+
 
 THINGSBOARD_HOST = 'demo.thingsboard.io'
 ACCESS_TOKEN = 'DtQvVu5pNtW4AGHcMJJw'
@@ -24,8 +22,6 @@ client.username_pw_set(ACCESS_TOKEN)
 client.connect(THINGSBOARD_HOST, 1883, 60)
 client.loop_start()
 
-
-#ubi_var = api.get_variable('5a695f4cc03f973ff9b5a80f')
 
 class AtlasI2C:
 	long_timeout = 1.5         	# the timeout needed to query readings and calibrations
@@ -75,8 +71,8 @@ class AtlasI2C:
 			if (read_count >= 1):
 				payload = {}
 				payload['reading'] = reading
-				payload['location'] = 'ground-level'
-				print("payload: " + str(payload))
+				payload['location'] = 'TANK 1'
+        payload['Type'] = 0
 				client.publish('v1/devices/me/telemetry', json.dumps(payload), 1)
 				requests.post('https://vv-dio-service-staging.herokuapp.com/api/v1/do/readings', data = payload)
 
@@ -118,63 +114,62 @@ class AtlasI2C:
 		self.set_i2c_address(prev_addr) # restore the address we were using
 		return i2c_devices
 
-
 def main():
-	device = AtlasI2C() 	# creates the I2C port object, specify the address or bus if necessary
+    device = AtlasI2C()  # creates the I2C port object, specify the address or bus if necessary
 
-	print(">> Atlas Scientific sample code")
-	print(">> Any commands entered are passed to the board via I2C except:")
-	print(">>   List_addr lists the available I2C addresses.")
-	print(">>   Address,xx changes the I2C address the Raspberry Pi communicates with.")
-	print(">>   Poll,xx.x command continuously polls the board every xx.x seconds")
-	print(" where xx.x is longer than the %0.2f second timeout." % AtlasI2C.long_timeout)
-	print(">> Pressing ctrl-c will stop the polling")
+    print(">> Atlas Scientific sample code")
+    print(">> Any commands entered are passed to the board via I2C except:")
+    print(">>   List_addr lists the available I2C addresses.")
+    print(">>   Address,xx changes the I2C address the Raspberry Pi communicates with.")
+    print(">>   Poll,xx.x command continuously polls the board every xx.x seconds")
+    print(" where xx.x is longer than the %0.2f second timeout." % AtlasI2C.long_timeout)
+    print(">> Pressing ctrl-c will stop the polling")
 
-	# main loop
-	while True:
-		input = raw_input("Enter command: ")
+    # main loop
+    while True:
+        input = raw_input("Enter command: ")
 
-		if input.upper().startswith("LIST_ADDR"):
-			devices = device.list_i2c_devices()
-			for i in range(len (devices)):
-				print devices[i]
+        if input.upper().startswith("LIST_ADDR"):
+            devices = device.list_i2c_devices()
+            for i in range(len(devices)):
+                print devices[i]
 
-		# address command lets you change which address the Raspberry Pi will poll
-		elif input.upper().startswith("ADDRESS"):
-			addr = int(string.split(input, ',')[1])
-			device.set_i2c_address(addr)
-			print("I2C address set to " + str(addr))
+        # address command lets you change which address the Raspberry Pi will poll
+        elif input.upper().startswith("ADDRESS"):
+            addr = int(string.split(input, ',')[1])
+            device.set_i2c_address(addr)
+            print("I2C address set to " + str(addr))
 
-		# continuous polling command automatically polls the board
-		elif input.upper().startswith("POLL"):
-			delaytime = float(string.split(input, ',')[1])
+        # continuous polling command automatically polls the board
+        elif input.upper().startswith("POLL"):
+            delaytime = float(string.split(input, ',')[1])
 
-			# check for polling time being too short, change it to the minimum timeout if too short
-			if delaytime < AtlasI2C.long_timeout:
-				print("Polling time is shorter than timeout, setting polling time to %0.2f" % AtlasI2C.long_timeout)
-				delaytime = AtlasI2C.long_timeout
+            # check for polling time being too short, change it to the minimum timeout if too short
+            if delaytime < AtlasI2C.long_timeout:
+                print("Polling time is shorter than timeout, setting polling time to %0.2f" % AtlasI2C.long_timeout)
+                delaytime = AtlasI2C.long_timeout
 
-			# get the information of the board you're polling
-			info = string.split(device.query("I"), ",")[1]
-			print("Polling %s sensor every %0.2f seconds, press ctrl-c to stop polling" % (info, delaytime))
+            # get the information of the board you're polling
+            info = string.split(device.query("I"), ",")[1]
+            print("Polling %s sensor every %0.2f seconds, press ctrl-c to stop polling" % (info, delaytime))
 
-			try:
-				while True:
-					print(device.query("R"))
-					time.sleep(delaytime - AtlasI2C.long_timeout)
-			except KeyboardInterrupt: 		# catches the ctrl-c command, which breaks the loop above
-				print("Continuous polling stopped")
+            try:
+                while True:
+                    print(device.query("R"))
+                    time.sleep(delaytime - AtlasI2C.long_timeout)
+            except KeyboardInterrupt:  # catches the ctrl-c command, which breaks the loop above
+                print("Continuous polling stopped")
 
-		# if not a special keyword, pass commands straight to board
-		else:
-			if len(input) == 0:
-				print "Please input valid command."
-			else:
-				try:
-					print(device.query(input))
-				except IOError:
-					print("Query failed \n - Address may be invalid, use List_addr command to see available addresses")
+        # if not a special keyword, pass commands straight to board
+        else:
+            if len(input) == 0:
+                print "Please input valid command."
+            else:
+                try:
+                    print(device.query(input))
+                except IOError:
+                    print("Query failed \n - Address may be invalid, use List_addr command to see available addresses")
 
 
 if __name__ == '__main__':
-	main()
+    main()
