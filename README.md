@@ -1,4 +1,4 @@
-# Volcano Veggies
+# DiO Controllers
 This project is for a compnay called Volcano Veggies located in Downtown Bend,Oregon. Volcano Veggies is an Aquaponics Vegetable growing farm that can operate all year round and provide fresh local veggies. 
 This project is being worked on by two OSU students, Makeila Lundy and Justin Tappert.
 
